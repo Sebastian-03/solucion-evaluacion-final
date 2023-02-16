@@ -1,0 +1,73 @@
+importar  sqlite3
+
+conexión = sqlite3 . conectar ( 'tienda.db' )
+cursor_obj  =  conexión . cursor ()
+cursor_obj . ejecutar ( "BOTAR TABLA SI EXISTEN USUARIOS" )
+tabla  =  """ CREAR TABLA USUARIOS (
+            ID ENTERO CLAVE PRIMARIA AUTOINCREMENTO,
+            USUARIO VARCHAR(25),
+            CONTRASEÑA VARCHAR(255) NO NULO,
+            CORREO ELECTRÓNICO VARCHAR(255) NO NULO,
+            NOMBRE COMPLETO VARCHAR(25) NO NULO,
+            PUNTUACIÓN ENT,
+            TIPOSUARIO VARCHAR(25)
+        ); """
+cursor_obj . ejecutar ( tabla )
+cursor_obj . ejecutar ( "BOTAR TABLA SI EXISTEN PRODUCTOS" )
+tabla  =  """ CREAR TABLA PRODUCTOS (
+            ID ENTERO CLAVE PRIMARIA AUTOINCREMENTO,
+            NOMBREPRODUCTO VARCHAR(255) NO NULO,
+            PRECIO VARCHAR(20) NO NULO,
+            CATEGORIA VARCHAR(25) NO NULO,
+            STCOKACTUAL INT,
+            CREACTION_PRODUCT TIMESTAMP PREDETERMINADO ACTUAL_TIMESTAMP,
+            ACTUALIZAR_PRODUCTO TIMESTAMP PREDETERMINADO ACTUAL_TIMESTAMP
+        ); """
+cursor_obj . ejecutar ( tabla )
+cursor_obj . ejecutar ( "BOTAR TABLA SI EXISTE VENTA" )
+
+tabla = """ CREAR TABLA VENTA (
+            ORDERID ENTERO CLAVE PRIMARIA AUTOINCREMENTO,
+            ID PRODUCTO INT,
+            PRECIOTOTAL VARCHAR(25) NO NULO
+        ); """
+
+cursor_obj . ejecutar ( tabla )
+cursor_obj . ejecutar ( "BOTAR TABLA SI EXISTE INVENTARIO" )
+
+tabla = """ CREAR TABLA INVENTARIO (
+            IDMOVIMIENTO INTEGER PRIMARY KEY AUTOINCREMENT,
+            PRODUCTID INT NO NULO,
+            CANTIDAD INT NO NULO,
+            FECHA_MOVIMIENTO TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ); """
+cursor_obj . ejecutar ( tabla )
+
+cursor_obj . ejecutar ( "BOTAR TABLA SI EXISTE TASA DE CAMBIOS" )
+
+tabla = """ CREAR TABLA TASA DE CAMBIOS(
+            IDMOVIMIENTO INTEGER PRIMARY KEY AUTOINCREMENT,
+            PRECIO VARCHAR(20) NO NULO,
+            CANTIDAD INT NO NULO,
+            STCOKACTUAL INT,
+        ); """
+cursor_obj . ejecutar ( tabla )
+
+
+# comentamos las inserciones ya que solo sera parte de la creacion de tablas
+""" insert =" INSERTAR EN USUARIOS(USUARIO,CONTRASEÑA,EMAIL,NOMBRE COMPLETO,PUNTUACIÓN,TIPOUSUARIO) VALORES('admin','admin','admin@datux.com','admin datux',0,'admin' )"
+conn.execute(insertar)
+insert =" INSERTAR EN USUARIOS(USUARIO,CONTRASEÑA,EMAIL,NOMBRE COMPLETO,PUNTUACION,TIPOUSUARIO) VALORES('cliente','cliente','email','cliente',0,'cliente')"
+conn.execute(insertar)
+imprimir("La mesa esta lista")
+print("ingrese valores")
+nameProduct=input('ingrese el nombre del producto')
+precio=input('ingrese el PRECIO:')
+categria=input('ingrese el CATEGORIA:')
+stock=int(input('ingrese el STCOKACTUAL:'))
+insert="INSERTAR EN PRODUCTOS(NOMBREPRODUCTO,PRECIO,CATEGORIA,ESTCOKACTUAL) VALORES(?,?,?,?);"
+data=(nombreProducto,precio,categoria,stock)
+conn.execute(insertar,datos)
+"""
+
+contacto _ cometer ()
