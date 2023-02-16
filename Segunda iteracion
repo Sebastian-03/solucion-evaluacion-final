@@ -1,0 +1,43 @@
+importar  pandas  como  pd
+importar  sistema operativo
+importar  base de datos
+import  pywhatkit
+mensaje = """
+    1)Insertar datos:
+    2)Actualizar datos del dolar
+"""
+imprimir ( mensaje )
+a = int ( input ( 'ingrese la tarea a realizar: ' ))
+
+
+def  insertar datos ():
+
+    ruta_ = os . getcwd () + '\datosTienda.csv.py'
+    conexión = db . Conexión ( 'datostienda.csv.py' )
+    cursor = conexión . obtenerCursor ()
+    imprimir ( ruta_ )
+    df  =  pd . read_csv ( ruta_ , sep  =  ";" )
+
+    para  i , fila  en  df . iterrows ():
+        imprimir ( fila [ 'ORDER_ID' ])
+
+
+
+def  actualizarDolar ():
+    url  =  'https://api.apis.net.pe/v1/tipo-cambio-sunat'  #tipo cambio sunat
+    aprobar
+
+    suma = 0;
+    for var in range(1, 31):
+        num = int(input("INtroduce el valor de la tasa de cambio:"))
+        if num >0:
+            suma = suma + num
+
+
+
+
+    #enviar mensaje de whastapp
+
+    pywhatkit.sendwhatmsg("USUARIO",
+                          "Atraves de este mensaje se le informa sobre su tasa de cambios, registre sus nombres y apellidos completos",
+                           23,41)
